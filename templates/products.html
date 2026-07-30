@@ -1,27 +1,36 @@
 {% extends "base.html" %}
+{% load static %}
 
 {% block title %}
-Mahsulotlar | Mega Wall
+Mahsulotlar | Mega Wall Chemicals
 {% endblock %}
 
 {% block content %}
 
-<section class="py-5 mt-5">
+<section class="products-section py-5 mt-5">
 
     <div class="container">
 
         <div class="text-center mb-5">
 
-            <span class="section-subtitle">
-                Mahsulotlar
-            </span>
+            <div class="hero-badge mb-3">
 
-            <h1 class="section-title">
+                <i class="fas fa-flask me-2"></i>
+
+                Mahsulotlar
+
+            </div>
+
+            <h2 class="section-title">
+
                 Bizning mahsulotlarimiz
-            </h1>
+
+            </h2>
 
             <p class="section-description">
-                Mega Wall tomonidan taklif etilayotgan sifatli qurilish kimyosi mahsulotlari bilan tanishing.
+
+                Qurilish kimyosi sanoati uchun yuqori sifatli xomashyolar.
+
             </p>
 
         </div>
@@ -32,32 +41,42 @@ Mahsulotlar | Mega Wall
 
             <div class="col-md-6 col-lg-4">
 
-                <div class="card product-card h-100 shadow-sm">
+                <div class="product-card h-100">
 
                     {% if product.image %}
 
-                    <img src="{{ product.image.url }}"
-                         class="card-img-top"
-                         alt="{{ product.name }}">
+                    <div class="product-image">
+
+                        <img src="{{ product.image.url }}"
+                             alt="{{ product.name }}"
+                             class="img-fluid">
+
+                    </div>
 
                     {% endif %}
 
-                    <div class="card-body d-flex flex-column">
+                    <div class="product-body">
 
-                        <span class="badge bg-primary mb-2">
+                        <span class="product-badge">
+
                             {{ product.category }}
+
                         </span>
 
-                        <h5 class="fw-bold">
-                            {{ product.name }}
-                        </h5>
+                        <h4>
 
-                        <p class="text-muted flex-grow-1">
+                            {{ product.name }}
+
+                        </h4>
+
+                        <p>
+
                             {{ product.short_description }}
+
                         </p>
 
                         <a href="{% url 'main:product_detail' product.slug %}"
-                           class="btn btn-primary">
+                           class="btn product-btn">
 
                             Batafsil →
 
@@ -73,7 +92,7 @@ Mahsulotlar | Mega Wall
 
             <div class="col-12 text-center">
 
-                <h4>Mahsulotlar topilmadi.</h4>
+                <h4>Hozircha mahsulotlar mavjud emas.</h4>
 
             </div>
 

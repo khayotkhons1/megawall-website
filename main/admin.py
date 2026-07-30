@@ -1,4 +1,5 @@
 from django.contrib import admin
+
 from .models import Product, Contact
 
 
@@ -29,6 +30,7 @@ class ProductAdmin(admin.ModelAdmin):
         "name",
         "short_description",
         "description",
+        "slug",
     )
 
     prepopulated_fields = {
@@ -50,6 +52,14 @@ class ProductAdmin(admin.ModelAdmin):
         "created_at",
         "updated_at",
     )
+
+    date_hierarchy = "created_at"
+
+    list_per_page = 25
+
+    save_on_top = True
+
+    empty_value_display = "-"
 
     fieldsets = (
 
@@ -75,7 +85,7 @@ class ProductAdmin(admin.ModelAdmin):
         ),
 
         (
-            "Rasm",
+            "Mahsulot rasmi",
             {
                 "fields": (
                     "image",
@@ -103,14 +113,12 @@ class ProductAdmin(admin.ModelAdmin):
                 ),
                 "classes": (
                     "collapse",
-                )
+                ),
             }
         ),
 
     )
-
-
-@admin.register(Contact)
+    @admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
 
     list_display = (
@@ -150,6 +158,14 @@ class ContactAdmin(admin.ModelAdmin):
     readonly_fields = (
         "created_at",
     )
+
+    date_hierarchy = "created_at"
+
+    list_per_page = 25
+
+    save_on_top = True
+
+    empty_value_display = "-"
 
     fieldsets = (
 

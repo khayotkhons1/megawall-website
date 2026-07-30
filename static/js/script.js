@@ -1,95 +1,249 @@
-// ==========================================
-// Floating Contact Menu
-// ==========================================
+/*=========================================
+        MEGA WALL - SCRIPT.JS
+=========================================*/
 
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", () => {
 
-    const floatingContact = document.getElementById("floatingContact");
-    const contactToggle = document.getElementById("contactToggle");
+    /*=========================================
+            AOS
+    =========================================*/
 
-    if (floatingContact && contactToggle) {
+    if (typeof AOS !== "undefined") {
 
-        contactToggle.addEventListener("click", function (e) {
-
-            e.stopPropagation();
-
-            floatingContact.classList.toggle("active");
-            contactToggle.classList.toggle("active");
-
-        });
-
-        document.addEventListener("click", function (e) {
-
-            if (!floatingContact.contains(e.target)) {
-
-                floatingContact.classList.remove("active");
-                contactToggle.classList.remove("active");
-
-            }
-
-        });
-
-        document.addEventListener("keydown", function (e) {
-
-            if (e.key === "Escape") {
-
-                floatingContact.classList.remove("active");
-                contactToggle.classList.remove("active");
-
-            }
-
+        AOS.init({
+            duration: 900,
+            once: true,
+            offset: 80
         });
 
     }
 
-});
-/*==============================
-      HERO COUNTER
-==============================*/
+    /*=========================================
+            NAVBAR SCROLL
+    =========================================*/
 
-const counters = document.querySelectorAll(".counter");
+    const navbar = document.querySelector(".custom-navbar");
 
-const runCounter = () => {
+    const navbarScroll = () => {
 
-    counters.forEach(counter => {
+        if (!navbar) return;
 
-        const target = +counter.dataset.target;
+        if (window.scrollY > 40) {
 
-        let count = 0;
+            navbar.classList.add("scrolled");
 
-        const speed = target / 80;
+        } else {
 
-        const update = () => {
+            navbar.classList.remove("scrolled");
 
-            if(count < target){
+        }
 
-                count += speed;
+    };
 
-                counter.innerText = Math.ceil(count);
+    navbarScroll();
 
-                requestAnimationFrame(update);
+    window.addEventListener("scroll", navbarScroll);
 
-            }else{
+    /*=========================================
+            SMOOTH SCROLL
+    =========================================*/
 
-                counter.innerText = target + "+";
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+
+        link.addEventListener("click", function (e) {
+
+            const target = document.querySelector(this.getAttribute("href"));
+
+            if (!target) return;
+
+            e.preventDefault();
+
+            target.scrollIntoView({
+
+                behavior: "smooth",
+                block: "start"
+
+            });
+
+        });
+
+    });
+
+    /*=========================================
+        MOBILE NAVBAR AUTO CLOSE
+    =========================================*/
+
+    const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
+    const navbarCollapse = document.querySelector(".navbar-collapse");
+
+    navLinks.forEach(link => {
+
+        link.addEventListener("click", () => {
+
+            if (navbarCollapse.classList.contains("show")) {
+
+                bootstrap.Collapse.getOrCreateInstance(navbarCollapse).hide();
 
             }
 
-        }
+        });
+
+    });
+
+    /*=========================================
+            ACTIVE MENU
+    =========================================*/
+
+    const sections = document.querySelectorAll("section[id]");
+
+    const activateMenu = () => {
+
+        let current = "";
+
+        sections.forEach(section => {
+
+            const top = section.offsetTop - 120;
+
+            if (window.scrollY >= top) {
+
+                current = section.getAttribute("id");
+
+            }
+
+        });
+
+        document.querySelectorAll(".navbar-nav .nav-link").forEach(link => {
+
+            link.classList.remove("active");
+
+            if (link.getAttribute("href") === "#" + current) {
+
+                link.classList.add("active");
+
+            }
+
+        });
+
+    };
+
+    activateMenu();
+
+    window.addEventListener("scroll", activateMenu);
+
+    /*=========================================
+            HERO COUNTER
+    =========================================*/
+
+    document.querySelectorAll(".counter").forEach(counter => {
+
+        const target = Number(counter.dataset.target);
+
+        if (!target) return;
+
+        let current = 0;
+
+        const step = Math.max(1, target / 80);
+
+        const update = () => {
+
+            current += step;
+
+            if (current < target) {
+
+                counter.textContent = Math.ceil(current);
+
+                requestAnimationFrame(update);
+
+            } else {
+
+                counter.textContent = target + "+";
+
+            }
+
+        };
 
         update();
 
     });
 
-}
+    /*=========================================
+        FLOATING CONTACT
+    =========================================*/
 
-window.addEventListener("load", runCounter);
-const navbar = document.querySelector(".custom-navbar");
+    const floating = document.getElementById("floatingContact");
+    const toggle = document.getElementById("contactToggle");
 
-window.addEventListener("scroll", () => {
-    if (window.scrollY > 40) {
-        navbar.classList.add("scrolled");
-    } else {
-        navbar.classList.remove("scrolled");
+    if (floating && toggle) {
+
+        toggle.addEventListener("click", e => {
+
+            e.stopPropagation();
+
+            floating.classList.toggle("active");
+            toggle.classList.toggle("active");
+
+        });
+
+        document.addEventListener("click", e => {
+
+            if (!floating.contains(e.target)) {
+
+                floating.classList.remove("active");
+                toggle.classList.remove("active");
+
+            }
+
+        });
+
+        document.addEventListener("keydown", e => {
+
+            if (e.key === "Escape") {
+
+                floating.classList.remove("active");
+                toggle.classList.remove("active");
+
+            }
+
+        });
+
     }
+
+    /*=========================================
+            SCROLL TOP
+    =========================================*/
+
+    const scrollTop = document.querySelector(".scroll-top");
+
+    if (scrollTop) {
+
+        window.addEventListener("scroll", () => {
+
+            if (window.scrollY > 500) {
+
+                scrollTop.classList.add("show");
+
+            } else {
+
+                scrollTop.classList.remove("show");
+
+            }
+
+        });
+
+        scrollTop.addEventListener("click", e => {
+
+            e.preventDefault();
+
+            window.scrollTo({
+
+                top: 0,
+
+                behavior: "smooth"
+
+            });
+
+        });
+
+    }
+
 });

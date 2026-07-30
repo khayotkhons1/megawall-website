@@ -1,22 +1,33 @@
 {% load static %}
 
-<a class="navbar-brand d-flex align-items-center" href="#home">
+<nav class="navbar navbar-expand-lg custom-navbar fixed-top">
 
-    <img src="{% static 'images/logo.png' %}"
-         alt="Mega Wall Chemicals"
-         class="navbar-logo">
+    <div class="container">
 
-</a>
-        <!-- Mobile -->
+        <!-- Logo -->
+        <a class="navbar-brand" href="#top">
+
+            <img src="{% static 'images/logo.png' %}"
+                 alt="Mega Wall Chemicals Logo"
+                 class="navbar-logo">
+
+        </a>
+
+        <!-- Mobile Toggle -->
 
         <button class="navbar-toggler"
                 type="button"
                 data-bs-toggle="collapse"
-                data-bs-target="#navbarNav">
+                data-bs-target="#navbarNav"
+                aria-controls="navbarNav"
+                aria-expanded="false"
+                aria-label="Toggle navigation">
 
-            <i class="fas fa-bars text-white"></i>
+            <span class="navbar-toggler-icon"></span>
 
         </button>
+
+        <!-- Menu -->
 
         <div class="collapse navbar-collapse"
              id="navbarNav">
@@ -28,7 +39,7 @@
                     <a class="nav-link active"
                        href="#top">
 
-                        Bosh sahifa
+                        Home
 
                     </a>
 
@@ -39,7 +50,7 @@
                     <a class="nav-link"
                        href="#about">
 
-                        Biz haqimizda
+                        About
 
                     </a>
 
@@ -50,7 +61,7 @@
                     <a class="nav-link"
                        href="#products">
 
-                        Mahsulotlar
+                        Products
 
                     </a>
 
@@ -61,7 +72,7 @@
                     <a class="nav-link"
                        href="#contact">
 
-                        Aloqa
+                        Contact
 
                     </a>
 
@@ -69,11 +80,14 @@
 
             </ul>
 
+            <!-- Right Side -->
+
             <div class="d-flex align-items-center">
 
                 <a href="https://wa.me/998901234567"
                    target="_blank"
-                   class="whatsapp-btn me-3">
+                   class="whatsapp-btn me-3"
+                   aria-label="WhatsApp">
 
                     <i class="fab fa-whatsapp"></i>
 
@@ -82,7 +96,7 @@
                 <a href="#contact"
                    class="btn btn-primary quote-btn">
 
-                    Narx so'rash
+                    Get Quote
 
                 </a>
 

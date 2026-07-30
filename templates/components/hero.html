@@ -1,92 +1,175 @@
 {% load static %}
 
-<section class="hero-section position-relative overflow-hidden" id="home">
+<!-- ==========================================
+                HERO SECTION
+=========================================== -->
+<section id="hero" class="hero-section">
 
+    <!-- Background -->
     <div class="hero-overlay"></div>
-    <div class="hero-blur blur-1"></div>
-    <div class="hero-blur blur-2"></div>
+    <div class="hero-circle one"></div>
+    <div class="hero-circle two"></div>
 
     <div class="container">
 
-        <div class="row align-items-center min-vh-100 gy-5">
+        <div class="row align-items-center min-vh-100">
 
-            <!-- LEFT -->
-            <div class="col-lg-6 hero-content">
+            <!-- ================= LEFT ================= -->
 
-                <span class="hero-badge">
-                    <i class="bi bi-stars me-2"></i>
-                    PREMIUM CONSTRUCTION CHEMICALS
-                </span>
+            <div class="col-lg-6 hero-content" data-aos="fade-right">
+
+                <div class="hero-badge">
+
+                    <i class="fas fa-award me-2"></i>
+
+                    Premium Construction Chemical Supplier
+
+                </div>
 
                 <h1 class="hero-title">
-                    Building the Future with
-                    <span>Mega Wall Chemicals</span>
+
+                    High Performance
+
+                    <span>Construction Chemicals</span>
+
+                    For Modern Buildings
+
                 </h1>
 
-                <p class="hero-text">
-                    We supply premium construction chemical raw materials including
-                    HPMC, RDP, Titanium Dioxide, Citric Acid, Tartaric Acid,
-                    Starch Ether and more for manufacturers and distributors.
+                <p class="hero-description">
+
+                    Mega Wall Chemicals supplies premium-quality construction chemical raw materials including HPMC, RDP, Titanium Dioxide, Citric Acid, Tartaric Acid and many more for manufacturers and distributors worldwide.
+
                 </p>
 
                 <div class="hero-buttons">
-                    <a href="#products" class="btn hero-btn-primary">
-                        Explore Products
-                        <i class="bi bi-arrow-right ms-2"></i>
+
+                    <a href="#products"
+                       class="btn btn-primary">
+
+                        View Products
+
                     </a>
 
-                    <a href="#contact" class="btn hero-btn-secondary">
+                    <a href="#contact"
+                       class="btn btn-outline-light">
+
                         Contact Us
+
                     </a>
+
                 </div>
+
+                <!-- Statistics -->
 
                 <div class="hero-stats">
 
-                    <div class="stat-card">
-                        <h2 class="counter" data-target="20">0</h2>
+                    <div class="hero-stat">
+
+                        <h3>20+</h3>
+
                         <span>Products</span>
+
                     </div>
 
-                    <div class="stat-card">
-                        <h2 class="counter" data-target="100">0</h2>
-                        <span>Partners</span>
+                    <div class="hero-stat">
+
+                        <h3>100+</h3>
+
+                        <span>Business Partners</span>
+
                     </div>
 
-                    <div class="stat-card">
-                        <h2 class="counter" data-target="5">0</h2>
+                    <div class="hero-stat">
+
+                        <h3>5+</h3>
+
                         <span>Years Experience</span>
+
                     </div>
 
                 </div>
 
             </div>
 
-            <!-- RIGHT -->
-            <div class="col-lg-6">
+            <!-- ================= RIGHT ================= -->
 
-                <div class="hero-image-wrapper">
+            <div class="col-lg-6"
+                 data-aos="fade-left">
 
-                    <img
-                        src="{% static 'images/hero-chemical.jpg' %}"
-                        class="img-fluid hero-image"
-                        alt="Mega Wall Chemicals">
+                <div class="hero-image">
 
-                    <div class="hero-glass-card">
-                        <div class="glass-icon">
-                            <i class="bi bi-patch-check-fill"></i>
+                    <div class="hero-glow"></div>
+
+                    <img src="{% static 'images/hero-chemical.jpg' %}"
+                         alt="Mega Wall Chemicals"
+                         class="img-fluid hero-product-image">
+
+                    <!-- Floating Card -->
+
+                    <div class="hero-card card-top">
+
+                        <div class="card-top">
+
+                            <strong>HPMC</strong>
+
                         </div>
 
-                        <div>
-                            <h5>Premium Quality</h5>
-                            <p>Reliable raw materials for modern construction.</p>
+                        <div class="card-middle">
+
+                            Hydroxypropyl Methyl Cellulose
+
                         </div>
+
                     </div>
 
-                    <span class="floating tag1">HPMC</span>
-                    <span class="floating tag2">RDP</span>
-                    <span class="floating tag3">TiO₂</span>
-                    <span class="floating tag4">Citric Acid</span>
-                    <span class="floating tag5">Tartaric Acid</span>
+                    <!-- Floating Card -->
+
+                    <div class="hero-card card-middle">
+
+                        <div class="card-top">
+
+                            <strong>RDP</strong>
+
+                        </div>
+
+                        <div class="card-middle">
+
+                            Redispersible Polymer Powder
+
+                        </div>
+
+                    </div>
+
+                    <!-- Floating Card -->
+
+                    <div class="hero-card card-bottom">
+
+                        <div class="card-top">
+
+                            <strong>TiO₂</strong>
+
+                        </div>
+
+                        <div class="card-middle">
+
+                            Titanium Dioxide
+
+                        </div>
+
+                    </div>
+
+                    <!-- Floating Chemical Words -->
+
+                    <span class="chemical-word word-1">HPMC</span>
+
+                    <span class="chemical-word word-2">RDP</span>
+
+                    <span class="chemical-word word-3">TiO₂</span>
+
+                    <span class="chemical-word word-4">Citric Acid</span>
+
+                    <span class="chemical-word word-5">Tartaric Acid</span>
 
                 </div>
 
@@ -94,21 +177,21 @@
 
         </div>
 
-        <div class="partner-strip mt-5">
-            <div class="partner-track">
-                <span>HPMC</span>
-                <span>RDP</span>
-                <span>Titanium Dioxide</span>
-                <span>Citric Acid</span>
-                <span>Tartaric Acid</span>
-                <span>Starch Ether</span>
-                <span>Calcium Formate</span>
-                <span>HPMC</span>
-                <span>RDP</span>
-                <span>Titanium Dioxide</span>
-            </div>
+        <!-- Scroll Down -->
+
+        <div class="scroll-indicator text-center mt-5">
+
+            <a href="#about">
+
+                <i class="fas fa-chevron-down"></i>
+
+            </a>
+
         </div>
 
     </div>
 
 </section>
+<!-- ==========================================
+              HERO SECTION END
+=========================================== -->

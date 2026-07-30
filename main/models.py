@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 class Product(models.Model):
@@ -18,6 +19,7 @@ class Product(models.Model):
 
     slug = models.SlugField(
         "Slug",
+        max_length=220,
         unique=True
     )
 
@@ -38,7 +40,9 @@ class Product(models.Model):
 
     image = models.ImageField(
         "Asosiy rasm",
-        upload_to="products/"
+        upload_to="products/",
+        blank=False,
+        null=False
     )
 
     is_featured = models.BooleanField(
@@ -72,11 +76,36 @@ class Product(models.Model):
 
         ordering = ["order", "name"]
 
+        indexes = [
+
+            models.Index(fields=["slug"]),
+
+            models.Index(fields=["category"]),
+
+            models.Index(fields=["is_active"]),
+
+            models.Index(fields=["is_featured"]),
+
+        ]
+
     def __str__(self):
 
         return self.name
 
-class Contact(models.Model):
+    def get_absolute_url(self):
+
+        return reverse(
+
+            "main:product_detail",
+
+            kwargs={
+
+                "slug": self.slug
+
+            }
+
+        )
+    class Contact(models.Model):
 
     name = models.CharField(
         "Ism",
@@ -89,7 +118,7 @@ class Contact(models.Model):
 
     phone = models.CharField(
         "Telefon",
-        max_length=30,
+        max_length=20,
         blank=True
     )
 
@@ -120,6 +149,15 @@ class Contact(models.Model):
 
         ordering = ["-created_at"]
 
+        indexes = [
+
+            models.Index(fields=["is_read"]),
+
+            models.Index(fields=["created_at"]),
+
+        ]
+
     def __str__(self):
-        return self.name
+
+        return f"{self.name} - {self.email}"
     
