@@ -1,0 +1,197 @@
+<section class="contact" id="contact">
+
+    <div class="container">
+
+        <div class="text-center mb-5" data-aos="fade-up">
+
+            <span class="section-subtitle">
+                Bog'lanish
+            </span>
+
+            <h2 class="section-title">
+                Biz bilan bog'laning
+            </h2>
+
+            <p class="section-description">
+                Mahsulotlarimiz, narxlar yoki hamkorlik bo'yicha savollaringiz
+                bo'lsa, biz bilan bog'laning. Mutaxassislarimiz sizga tez orada
+                javob berishadi.
+            </p>
+
+        </div>
+
+        <div class="row g-5">
+
+            <!-- Chap tomon -->
+
+            <div class="col-lg-5" data-aos="fade-right">
+
+                <div class="contact-card">
+
+                    <h3 class="contact-title">
+                        Aloqa ma'lumotlari
+                    </h3>
+
+                    <p class="contact-text">
+                        Siz uchun qulay usul orqali biz bilan bog'lanishingiz mumkin.
+                    </p>
+
+                    <div class="contact-info">
+
+                        <div class="contact-icon">
+                            <i class="fas fa-phone-alt"></i>
+                        </div>
+
+                        <div>
+                            <h5>Telefon</h5>
+                            <p>+998 XX XXX XX XX</p>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-info">
+
+                        <div class="contact-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+
+                        <div>
+                            <h5>Email</h5>
+                            <p>info@megawall.uz</p>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-info">
+
+                        <div class="contact-icon">
+                            <i class="fas fa-location-dot"></i>
+                        </div>
+
+                        <div>
+                            <h5>Manzil</h5>
+                            <p>Toshkent shahri, O'zbekiston</p>
+                        </div>
+
+                    </div>
+
+                    <div class="contact-info">
+
+                        <div class="contact-icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+
+                        <div>
+                            <h5>Ish vaqti</h5>
+                            <p>Dushanba – Shanba<br>09:00 – 18:00</p>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- O'ng tomon -->
+
+            <div class="col-lg-7" data-aos="fade-left">
+
+                <div class="contact-card">
+
+                    <form method="post" novalidate>
+
+                        {% csrf_token %}
+
+                        {% if messages %}
+                            {% for message in messages %}
+                                <div class="alert alert-success mb-4">
+                                    {{ message }}
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+
+                                {{ form.name }}
+
+                                {% if form.name.errors %}
+                                    <small class="text-danger">
+                                        {{ form.name.errors }}
+                                    </small>
+                                {% endif %}
+
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+
+                                {{ form.email }}
+
+                                {% if form.email.errors %}
+                                    <small class="text-danger">
+                                        {{ form.email.errors }}
+                                    </small>
+                                {% endif %}
+
+                            </div>
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            {{ form.phone }}
+
+                            {% if form.phone.errors %}
+                                <small class="text-danger">
+                                    {{ form.phone.errors }}
+                                </small>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="mb-3">
+
+                            {{ form.subject }}
+
+                            {% if form.subject.errors %}
+                                <small class="text-danger">
+                                    {{ form.subject.errors }}
+                                </small>
+                            {% endif %}
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            {{ form.message }}
+
+                            {% if form.message.errors %}
+                                <small class="text-danger">
+                                    {{ form.message.errors }}
+                                </small>
+                            {% endif %}
+
+                        </div>
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary">
+
+                            <i class="fas fa-paper-plane me-2"></i>
+
+                            Xabar yuborish
+
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
