@@ -1,25 +1,12 @@
 {% load static %}
 
-<nav class="navbar navbar-expand-lg fixed-top custom-navbar">
+<a class="navbar-brand d-flex align-items-center" href="#home">
 
-    <div class="container">
+    <img src="{% static 'images/logo.png' %}"
+         alt="Mega Wall Chemicals"
+         class="navbar-logo">
 
-        <!-- Logo -->
-
-        <a class="navbar-brand d-flex align-items-center" href="/">
-
-            <img src="{% static 'images/logo.png' %}"
-                 alt="Mega Wall"
-                 class="logo">
-
-            <span class="brand-text ms-2">
-
-                MEGA WALL
-
-            </span>
-
-        </a>
-
+</a>
         <!-- Mobile -->
 
         <button class="navbar-toggler"
