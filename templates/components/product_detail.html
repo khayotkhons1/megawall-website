@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-{{ product.name }} | Mega Wall Chemical
+{{ product.name }} | Mega Wall Chemicals
 {% endblock %}
 
 {% block content %}
@@ -13,24 +13,22 @@
         <div class="row align-items-center g-5">
 
             <!-- Mahsulot rasmi -->
-
             <div class="col-lg-6" data-aos="fade-right">
 
-                <div class="product-image rounded-xl shadow-large">
+                <div class="product-image rounded-4 shadow">
 
                     <img src="{{ product.image.url }}"
-                         class="img-fluid"
+                         class="img-fluid rounded-4"
                          alt="{{ product.name }}">
 
                 </div>
 
             </div>
 
-            <!-- Mahsulot ma'lumotlari -->
-
+            <!-- Mahsulot haqida -->
             <div class="col-lg-6" data-aos="fade-left">
 
-                <span class="badge bg-primary mb-3">
+                <span class="badge bg-primary px-3 py-2 mb-3">
 
                     {{ product.get_category_display }}
 
@@ -42,29 +40,45 @@
 
                 </h1>
 
-                <p class="lead text-light-gray">
+                <p class="lead text-muted mb-4">
 
                     {{ product.description }}
 
                 </p>
 
-                <hr class="my-4">
+                <hr>
 
-                <div class="row mb-4">
+                <div class="row mt-4 mb-4">
 
-                    <div class="col-6">
+                    <div class="col-md-6">
 
-                        <strong>Kategoriya</strong>
+                        <h6 class="fw-bold">
 
-                        <p>{{ product.get_category_display }}</p>
+                            Kategoriya
+
+                        </h6>
+
+                        <p>
+
+                            {{ product.get_category_display }}
+
+                        </p>
 
                     </div>
 
-                    <div class="col-6">
+                    <div class="col-md-6">
 
-                        <strong>Holati</strong>
+                        <h6 class="fw-bold">
 
-                        <p>Mavjud</p>
+                            Holati
+
+                        </h6>
+
+                        <p class="text-success fw-semibold">
+
+                            Omborda mavjud
+
+                        </p>
 
                     </div>
 
@@ -77,11 +91,11 @@
 
                         <i class="fas fa-paper-plane me-2"></i>
 
-                        Buyurtma berish
+                        Narx so'rash
 
                     </a>
 
-                    <a href="tel:+998XXXXXXXXX"
+                    <a href="tel:+998886113388"
                        class="btn btn-outline-dark">
 
                         <i class="fas fa-phone me-2"></i>
@@ -90,7 +104,7 @@
 
                     </a>
 
-                    <a href="https://t.me/USERNAME"
+                    <a href="https://t.me/Megawall_2024"
                        target="_blank"
                        class="btn btn-success">
 
@@ -104,10 +118,12 @@
 
                 <div class="mt-5">
 
-                    <a href="{% url 'home' %}"
+                    <a href="{% url 'main:home' %}"
                        class="btn btn-outline-secondary">
 
-                        ← Bosh sahifaga qaytish
+                        <i class="fas fa-arrow-left me-2"></i>
+
+                        Bosh sahifaga qaytish
 
                     </a>
 
@@ -121,21 +137,33 @@
 
 </section>
 
-<!-- O'xshash mahsulotlar -->
-
 {% if related_products %}
 
-<section class="products py-5">
+<section class="py-5 bg-light">
 
     <div class="container">
 
         <div class="text-center mb-5">
+
+            <div class="hero-badge mb-3">
+
+                <i class="fas fa-box-open me-2"></i>
+
+                Tavsiya etiladi
+
+            </div>
 
             <h2 class="section-title">
 
                 O'xshash mahsulotlar
 
             </h2>
+
+            <p class="section-description">
+
+                Sizni qiziqtirishi mumkin bo'lgan boshqa mahsulotlar.
+
+            </p>
 
         </div>
 
@@ -145,22 +173,33 @@
 
             <div class="col-md-6 col-lg-4">
 
-                <div class="product-card">
+                <div class="product-card h-100">
+
+                    {% if item.image %}
 
                     <div class="product-image">
 
                         <img src="{{ item.image.url }}"
+                             class="img-fluid"
                              alt="{{ item.name }}">
 
                     </div>
 
+                    {% endif %}
+
                     <div class="product-body">
 
-                        <h3>
+                        <span class="product-badge">
+
+                            {{ item.get_category_display }}
+
+                        </span>
+
+                        <h4>
 
                             {{ item.name }}
 
-                        </h3>
+                        </h4>
 
                         <p>
 
@@ -169,9 +208,9 @@
                         </p>
 
                         <a href="{% url 'main:product_detail' item.slug %}"
-                           class="product-btn">
+                           class="btn product-btn">
 
-                            Batafsil
+                            Batafsil ma'lumot
 
                         </a>
 
