@@ -2155,21 +2155,56 @@ section{
 
 }
 
+.floating-contact.active .contact-toggle{
+
+    transform:rotate(135deg);
+
+}
+
+
 .contact-menu{
+
+    position:absolute;
+
+    right:0;
+
+    bottom:80px;
 
     width:220px;
 
-    background:#fff;
+    background:#ffffff;
 
     border-radius:18px;
 
-    box-shadow:var(--shadow-lg);
-
-    margin-bottom:18px;
+    box-shadow:0 15px 45px rgba(0,0,0,.18);
 
     overflow:hidden;
 
+    opacity:0;
+
+    visibility:hidden;
+
+    transform:translateY(20px) scale(.95);
+
+    transition:all .35s ease;
+
+    pointer-events:none;
+
+    z-index:999;
+
 }
+.floating-contact.active .contact-menu{
+
+    opacity:1;
+
+    visibility:visible;
+
+    transform:translateY(0) scale(1);
+
+    pointer-events:auto;
+
+}
+
 
 .contact-link{
 

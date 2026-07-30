@@ -166,8 +166,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
     });
 
-    /*=========================================
-        FLOATING CONTACT
+       /*=========================================
+            FLOATING CONTACT
     =========================================*/
 
     const floating = document.getElementById("floatingContact");
@@ -175,32 +175,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (floating && toggle) {
 
-        toggle.addEventListener("click", e => {
+        // Boshlanishida menyu yopiq bo'ladi
+        floating.classList.remove("active");
+
+        // Chat tugmasini bosganda ochish/yopish
+        toggle.addEventListener("click", function (e) {
 
             e.stopPropagation();
 
             floating.classList.toggle("active");
-            toggle.classList.toggle("active");
 
         });
 
-        document.addEventListener("click", e => {
+        // Popup ichini bosganda yopilmasin
+        const menu = floating.querySelector(".contact-menu");
 
-            if (!floating.contains(e.target)) {
+        if (menu) {
 
-                floating.classList.remove("active");
-                toggle.classList.remove("active");
+            menu.addEventListener("click", function (e) {
 
-            }
+                e.stopPropagation();
+
+            });
+
+        }
+
+        // Tashqariga bosilganda yopiladi
+        document.addEventListener("click", function () {
+
+            floating.classList.remove("active");
 
         });
 
-        document.addEventListener("keydown", e => {
+        // ESC bosilganda yopiladi
+        document.addEventListener("keydown", function (e) {
 
             if (e.key === "Escape") {
 
                 floating.classList.remove("active");
-                toggle.classList.remove("active");
 
             }
 
