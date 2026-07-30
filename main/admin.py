@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, Contact
+from .models import Contact, Product
 
 
 @admin.register(Product)
@@ -15,9 +15,7 @@ class ProductAdmin(admin.ModelAdmin):
         "created_at",
     )
 
-    list_display_links = (
-        "name",
-    )
+    list_display_links = ("name",)
 
     list_filter = (
         "category",
@@ -28,9 +26,9 @@ class ProductAdmin(admin.ModelAdmin):
 
     search_fields = (
         "name",
+        "slug",
         "short_description",
         "description",
-        "slug",
     )
 
     prepopulated_fields = {
@@ -71,7 +69,7 @@ class ProductAdmin(admin.ModelAdmin):
                     "slug",
                     "category",
                 )
-            }
+            },
         ),
 
         (
@@ -81,7 +79,7 @@ class ProductAdmin(admin.ModelAdmin):
                     "short_description",
                     "description",
                 )
-            }
+            },
         ),
 
         (
@@ -90,7 +88,7 @@ class ProductAdmin(admin.ModelAdmin):
                 "fields": (
                     "image",
                 )
-            }
+            },
         ),
 
         (
@@ -101,7 +99,7 @@ class ProductAdmin(admin.ModelAdmin):
                     "is_active",
                     "order",
                 )
-            }
+            },
         ),
 
         (
@@ -114,11 +112,13 @@ class ProductAdmin(admin.ModelAdmin):
                 "classes": (
                     "collapse",
                 ),
-            }
+            },
         ),
 
     )
-    @admin.register(Contact)
+
+
+@admin.register(Contact)
 class ContactAdmin(admin.ModelAdmin):
 
     list_display = (
@@ -130,9 +130,7 @@ class ContactAdmin(admin.ModelAdmin):
         "created_at",
     )
 
-    list_display_links = (
-        "name",
-    )
+    list_display_links = ("name",)
 
     list_filter = (
         "is_read",
@@ -147,17 +145,11 @@ class ContactAdmin(admin.ModelAdmin):
         "message",
     )
 
-    ordering = (
-        "-created_at",
-    )
+    ordering = ("-created_at",)
 
-    list_editable = (
-        "is_read",
-    )
+    list_editable = ("is_read",)
 
-    readonly_fields = (
-        "created_at",
-    )
+    readonly_fields = ("created_at",)
 
     date_hierarchy = "created_at"
 
@@ -177,7 +169,7 @@ class ContactAdmin(admin.ModelAdmin):
                     "email",
                     "phone",
                 )
-            }
+            },
         ),
 
         (
@@ -187,7 +179,7 @@ class ContactAdmin(admin.ModelAdmin):
                     "subject",
                     "message",
                 )
-            }
+            },
         ),
 
         (
@@ -197,7 +189,7 @@ class ContactAdmin(admin.ModelAdmin):
                     "is_read",
                     "created_at",
                 )
-            }
+            },
         ),
 
     )
